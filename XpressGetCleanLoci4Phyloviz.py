@@ -6,7 +6,6 @@ import argparse
 import collections
 from collections import OrderedDict
 #import HTSeq
-import matplotlib.pyplot as plt
 
 def presence (d3):	
 
