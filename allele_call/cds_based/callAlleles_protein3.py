@@ -23,8 +23,13 @@ def getBlastScoreRatios(genefile,basepath,doAll):
 	alleleI=0
 	
 	for allele in gene_fp: #new db for each allele to blast it against himself
+		
 		aux=(allele.name).split("_")
-		alleleI=int(aux[1])
+		if len(aux)<2:
+			alleleI=int(aux[0])
+		else:
+			alleleI=int(aux[1])
+
 		genome=-1
 		alleleList.append(allele.seq)
 		translatedSequence,x,y=translateSeq(allele.seq)
@@ -195,7 +200,10 @@ def main():
 	# get full list of alleles from main gene file and last allele number id
 	for allele in gene_fp:
 		aux=(allele.name).split("_")
-		alleleI=int(aux[1])
+		if len(aux)<2:
+			alleleI=int(aux[0])
+		else:
+			alleleI=int(aux[1])
 		fullAlleleList.append(allele.seq)
 	
 	resultsList = []
