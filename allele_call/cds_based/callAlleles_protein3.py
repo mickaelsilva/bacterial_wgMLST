@@ -23,7 +23,8 @@ def getBlastScoreRatios(genefile,basepath,doAll):
 	alleleI=0
 	
 	for allele in gene_fp: #new db for each allele to blast it against himself
-		alleleI+=1
+		aux=(allele.name).split("_")
+		alleleI=int(aux[1])
 		genome=-1
 		alleleList.append(allele.seq)
 		translatedSequence,x,y=translateSeq(allele.seq)
@@ -193,7 +194,8 @@ def main():
 	alleleI=0
 	# get full list of alleles from main gene file and last allele number id
 	for allele in gene_fp:
-		alleleI+=1
+		aux=(allele.name).split("_")
+		alleleI=int(aux[1])
 		fullAlleleList.append(allele.seq)
 	
 	resultsList = []
@@ -597,7 +599,8 @@ def main():
 												# --- add the new allele to the gene fasta --- #
 					
 					alleleI+=1
-					appendAllele='>allele_' + str(alleleI) + '_' + tagAux[:-1] +"_" + str(os.path.basename(genomesList[genome])) + '\n'
+					#appendAllele='>allele_' + str(alleleI) + '_' + tagAux[:-1] +"_" + str(os.path.basename(genomesList[genome])) + '\n'
+					appendAllele='>'+str(((os.path.basename(geneFile)).split("."))[0])+"_" + str(alleleI) + "_" + str(os.path.basename(genomesList[genome])) + '\n'
 					fG = open( geneFile, 'a' )
 					fG.write(appendAllele)
 					fG.write( alleleStr + '\n')
