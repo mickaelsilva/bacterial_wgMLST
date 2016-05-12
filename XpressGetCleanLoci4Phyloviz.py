@@ -65,7 +65,8 @@ def clean (inputfile,outputfile,totaldeletedgenes,rangeFloat,toremovegenes):
 	
 	d2 = array(d)
 	
-	presence (d2)
+	#uncomment to get a presence abscence file
+	#presence (d2)
 	
 	genomeslist= d2[1:,:1]
 	
